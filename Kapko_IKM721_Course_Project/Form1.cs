@@ -3,6 +3,7 @@ namespace Kapko_IKM721_Course_Project
     public partial class Form1 : Form
     {
         private bool Mode;
+        private MajorWork MajorObject;
         public Form1()
         {
             InitializeComponent();
@@ -16,7 +17,13 @@ namespace Kapko_IKM721_Course_Project
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        { 
+            About A = new About(); 
+
+            A.tAbout.Start();
+            A.ShowDialog();
+        
+            MajorObject = new MajorWork();
             this.Mode = true;
         }
 
@@ -24,6 +31,9 @@ namespace Kapko_IKM721_Course_Project
         {
             if (Mode)
             {
+                MajorObject.Write(tbInput.Text);
+                MajorObject.Task();
+                label1.Text = MajorObject.Read();
                 tbInput.Enabled = true;
                 tbInput.Focus();
                 tClock.Start();
